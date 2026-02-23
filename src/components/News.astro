@@ -31,7 +31,7 @@ const newsItems = [
         newsItems.map((item) => (
           <a
             href="#"
-            class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6 py-5 hover:bg-bg-alt -mx-4 px-4 rounded-lg transition-colors group"
+            class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6 py-5 hover:bg-bg-alt hover:translate-x-1 -mx-4 px-4 rounded-lg transition-all duration-300 group"
           >
             <time class="text-sm text-text-secondary flex-shrink-0">
               {item.date}
@@ -39,7 +39,7 @@ const newsItems = [
             <span class="text-xs bg-primary/10 text-primary px-2 py-0.5 rounded-full font-medium flex-shrink-0 w-fit">
               {item.category}
             </span>
-            <span class="text-text-body group-hover:text-primary transition-colors">
+            <span class="text-text-body group-hover:text-primary transition-all duration-300">
               {item.title}
             </span>
           </a>

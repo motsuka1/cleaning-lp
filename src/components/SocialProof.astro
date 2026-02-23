@@ -20,11 +20,11 @@ const logos = [
 <section class="py-16 bg-bg-alt">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <!-- Stats -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 reveal">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
       {
-        stats.map((stat) => (
-          <div class="text-center">
-            <p class="text-3xl md:text-4xl font-bold text-primary mb-1">
+        stats.map((stat, i) => (
+          <div class={`reveal reveal-delay-${i + 1} glass-card p-6 rounded-2xl text-center`}>
+            <p class="text-3xl md:text-4xl font-black gradient-text mb-1">
               {stat.value}
             </p>
             <p class="text-text-secondary font-medium">{stat.label}</p>
@@ -38,7 +38,7 @@ const logos = [
       <div class="logo-carousel flex gap-12 items-center w-max">
         {
           [...logos, ...logos].map((name) => (
-            <div class="flex-shrink-0 px-4 py-2 bg-white rounded-lg shadow-sm border border-gray-100">
+            <div class="flex-shrink-0 px-4 py-2 bg-white/60 backdrop-blur-sm rounded-lg shadow-sm border border-white/50">
               <span class="text-sm text-text-secondary font-medium whitespace-nowrap">
                 {name}
               </span>

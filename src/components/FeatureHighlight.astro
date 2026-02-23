@@ -18,8 +18,11 @@ const {
 } = Astro.props;
 ---
 
-<section class={`py-20 ${reversed ? "bg-bg-alt" : "bg-white"}`}>
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<section class={`py-20 relative overflow-hidden ${reversed ? "bg-bg-alt" : "bg-white"}`}>
+  <!-- Decorative blob -->
+  <div class={`blob hidden md:block w-80 h-80 ${reversed ? "bg-indigo -left-20 top-20" : "bg-purple -right-20 bottom-20"}`} style="animation-delay: -3s;"></div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
     <div
       class:list={[
         "grid md:grid-cols-2 gap-12 items-center",
@@ -28,7 +31,7 @@ const {
     >
       <!-- Text -->
       <div class="reveal">
-        <h2 class="text-3xl md:text-4xl font-bold mb-4 leading-tight">
+        <h2 class="text-3xl md:text-4xl font-black tracking-tight mb-4 leading-tight">
           {title}
         </h2>
         <p class="text-text-secondary text-lg mb-8">{description}</p>
@@ -65,10 +68,10 @@ const {
       </div>
 
       <!-- Mockup -->
-      <div class="reveal">
+      <div class="reveal" style="animation: float 6s ease-in-out infinite;">
         {
           mockupType === "report" && (
-            <div class="bg-white rounded-2xl shadow-xl border border-gray-100 p-6">
+            <div class="bg-white/80 backdrop-blur-md rounded-2xl border border-white/50 p-6 shadow-[0_8px_32px_rgba(1,112,185,0.12),0_4px_16px_rgba(99,102,241,0.08)]">
               <div class="flex items-center gap-2 mb-4">
                 <div class="w-3 h-3 rounded-full bg-red-400" />
                 <div class="w-3 h-3 rounded-full bg-yellow-400" />
@@ -105,7 +108,7 @@ const {
 
         {
           mockupType === "attendance" && (
-            <div class="bg-white rounded-2xl shadow-xl border border-gray-100 p-6">
+            <div class="bg-white/80 backdrop-blur-md rounded-2xl border border-white/50 p-6 shadow-[0_8px_32px_rgba(1,112,185,0.12),0_4px_16px_rgba(99,102,241,0.08)]">
               <div class="flex items-center gap-2 mb-4">
                 <div class="w-3 h-3 rounded-full bg-red-400" />
                 <div class="w-3 h-3 rounded-full bg-yellow-400" />
@@ -150,7 +153,7 @@ const {
 
         {
           mockupType === "website" && (
-            <div class="bg-white rounded-2xl shadow-xl border border-gray-100 p-6">
+            <div class="bg-white/80 backdrop-blur-md rounded-2xl border border-white/50 p-6 shadow-[0_8px_32px_rgba(1,112,185,0.12),0_4px_16px_rgba(99,102,241,0.08)]">
               <div class="flex items-center gap-2 mb-4">
                 <div class="w-3 h-3 rounded-full bg-red-400" />
                 <div class="w-3 h-3 rounded-full bg-yellow-400" />

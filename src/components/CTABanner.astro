@@ -2,8 +2,12 @@
 import Button from "./Button.astro";
 ---
 
-<section id="contact" class="py-20 bg-primary">
-  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center reveal">
+<section id="contact" class="py-20 relative overflow-hidden" style="background: linear-gradient(135deg, #0170B9 0%, #6366F1 50%, #8B5CF6 100%);">
+  <!-- Decorative circles -->
+  <div class="absolute -top-20 -left-20 w-80 h-80 bg-white/10 rounded-full blur-3xl"></div>
+  <div class="absolute -bottom-20 -right-20 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
+
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center reveal relative z-10">
     <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
       清掃業務のDXを、今日から始めませんか？
     </h2>
@@ -15,7 +19,7 @@ import Button from "./Button.astro";
       <Button
         href="#"
         variant="primary"
-        class="bg-white! text-primary! hover:bg-gray-100! shadow-xl text-lg px-8 py-4"
+        class="bg-white! from-white! to-white! text-primary! hover:bg-gray-100! shadow-[0_0_30px_rgba(255,255,255,0.3)] text-lg px-8 py-4"
       >
         無料で資料をダウンロード
       </Button>

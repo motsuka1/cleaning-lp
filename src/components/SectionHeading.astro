@@ -7,7 +7,12 @@ interface Props {
 const { title, subtitle } = Astro.props;
 ---
 
-<div class="text-center mb-12">
-  <h2 class="text-3xl md:text-4xl font-bold text-text-body mb-4">{title}</h2>
+<div class="text-center mb-16">
+  <div class="flex justify-center gap-1.5 mb-4">
+    <span class="w-2 h-2 rounded-full bg-primary"></span>
+    <span class="w-2 h-2 rounded-full bg-indigo"></span>
+    <span class="w-2 h-2 rounded-full bg-purple"></span>
+  </div>
+  <h2 class="text-3xl md:text-5xl font-black tracking-tight text-text-body mb-4">{title}</h2>
   {subtitle && <p class="text-lg text-text-secondary max-w-2xl mx-auto">{subtitle}</p>}
 </div>

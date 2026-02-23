@@ -7,7 +7,7 @@ const navLinks = [
 ---
 
 <header
-  class="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-sm z-50 border-b border-gray-100"
+  class="fixed top-0 left-0 right-0 bg-white/60 backdrop-blur-xl z-50 border-b border-white/30 shadow-[0_4px_30px_rgba(0,0,0,0.05)]"
 >
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-16">
@@ -45,7 +45,7 @@ const navLinks = [
         </a>
         <a
           href="#contact"
-          class="inline-flex items-center px-4 py-2 bg-primary text-white text-sm font-medium rounded-lg hover:bg-primary-dark transition-colors"
+          class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-primary to-indigo text-white text-sm font-medium rounded-lg hover:shadow-[0_0_20px_rgba(1,112,185,0.4)] transition-all duration-200"
         >
           資料請求
         </a>
@@ -72,7 +72,7 @@ const navLinks = [
   <!-- Mobile Menu -->
   <div
     id="mobile-menu"
-    class="hidden md:hidden bg-white border-t border-gray-100"
+    class="hidden md:hidden bg-white/80 backdrop-blur-xl border-t border-white/30"
   >
     <div class="px-4 py-4 space-y-3">
       {
@@ -91,7 +91,7 @@ const navLinks = [
       </a>
       <a
         href="#contact"
-        class="block w-full text-center px-4 py-2 bg-primary text-white font-medium rounded-lg hover:bg-primary-dark transition-colors"
+        class="block w-full text-center px-4 py-2 bg-gradient-to-r from-primary to-indigo text-white font-medium rounded-lg transition-all duration-200"
       >
         資料請求
       </a>
