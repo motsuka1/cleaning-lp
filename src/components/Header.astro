@@ -1,0 +1,116 @@
+---
+const navLinks = [
+  { label: "サービス一覧", href: "#services" },
+  { label: "導入事例", href: "#testimonials" },
+  { label: "料金", href: "#pricing" },
+];
+---
+
+<header
+  class="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-sm z-50 border-b border-gray-100"
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <!-- Logo -->
+      <a href="/" class="flex items-center gap-2">
+        <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+          <span class="text-white font-bold text-sm">C</span>
+        </div>
+        <span class="text-xl font-bold text-text-body">
+          Clean<span class="text-primary">AI</span>
+        </span>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex items-center gap-8">
+        {
+          navLinks.map((link) => (
+            <a
+              href={link.href}
+              class="text-text-secondary hover:text-primary transition-colors text-sm font-medium"
+            >
+              {link.label}
+            </a>
+          ))
+        }
+      </nav>
+
+      <!-- Desktop CTAs -->
+      <div class="hidden md:flex items-center gap-3">
+        <a
+          href="#"
+          class="text-sm text-text-secondary hover:text-primary transition-colors font-medium"
+        >
+          ログイン
+        </a>
+        <a
+          href="#contact"
+          class="inline-flex items-center px-4 py-2 bg-primary text-white text-sm font-medium rounded-lg hover:bg-primary-dark transition-colors"
+        >
+          資料請求
+        </a>
+      </div>
+
+      <!-- Mobile Hamburger -->
+      <button
+        id="menu-toggle"
+        class="md:hidden p-2 text-text-body"
+        aria-label="メニュー"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path
+            id="menu-icon"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div
+    id="mobile-menu"
+    class="hidden md:hidden bg-white border-t border-gray-100"
+  >
+    <div class="px-4 py-4 space-y-3">
+      {
+        navLinks.map((link) => (
+          <a
+            href={link.href}
+            class="block text-text-secondary hover:text-primary transition-colors font-medium"
+          >
+            {link.label}
+          </a>
+        ))
+      }
+      <hr class="border-gray-100" />
+      <a href="#" class="block text-text-secondary hover:text-primary transition-colors font-medium">
+        ログイン
+      </a>
+      <a
+        href="#contact"
+        class="block w-full text-center px-4 py-2 bg-primary text-white font-medium rounded-lg hover:bg-primary-dark transition-colors"
+      >
+        資料請求
+      </a>
+    </div>
+  </div>
+</header>
+
+<script>
+  const toggle = document.getElementById("menu-toggle");
+  const menu = document.getElementById("mobile-menu");
+  const icon = document.getElementById("menu-icon");
+
+  toggle?.addEventListener("click", () => {
+    const isOpen = !menu?.classList.contains("hidden");
+    menu?.classList.toggle("hidden");
+    if (isOpen) {
+      icon?.setAttribute("d", "M4 6h16M4 12h16M4 18h16");
+    } else {
+      icon?.setAttribute("d", "M6 18L18 6M6 6l12 12");
+    }
+  });
+</script>

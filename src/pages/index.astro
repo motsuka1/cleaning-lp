@@ -1,0 +1,69 @@
+---
+import "../styles/global.css";
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Hero from "../components/Hero.astro";
+import SocialProof from "../components/SocialProof.astro";
+import ServiceGrid from "../components/ServiceGrid.astro";
+import FeatureHighlight from "../components/FeatureHighlight.astro";
+import WhyUs from "../components/WhyUs.astro";
+import Testimonials from "../components/Testimonials.astro";
+import CTABanner from "../components/CTABanner.astro";
+import News from "../components/News.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout>
+  <Header />
+
+  <main>
+    <Hero />
+    <SocialProof />
+    <ServiceGrid />
+
+    <!-- Feature Highlight: 清掃報告 -->
+    <FeatureHighlight
+      title="写真を撮るだけ。AIが清掃報告書を自動作成。"
+      description="現場で撮影した写真をアップロードするだけで、AIが清掃状態を分析し、プロフェッショナルな報告書を自動生成します。"
+      bullets={[
+        "写真アップロードだけで報告書を自動生成",
+        "AIが清掃品質を自動評価・スコアリング",
+        "PDF・Excel形式でワンクリックエクスポート",
+      ]}
+      mockupType="report"
+    />
+
+    <!-- Feature Highlight: 勤怠管理 -->
+    <FeatureHighlight
+      title="スマホひとつで、現場の勤怠を完全管理。"
+      description="GPS連動の打刻機能で、現場ごとの出退勤を正確に記録。シフト作成から給与計算まで、すべてを一元管理します。"
+      bullets={[
+        "GPS連動でリアルタイムに出退勤を管理",
+        "シフト作成・調整がドラッグ＆ドロップで完結",
+        "給与計算を自動化し、月末の集計作業を大幅削減",
+      ]}
+      reversed
+      iconColor="accent"
+      mockupType="attendance"
+    />
+
+    <!-- Feature Highlight: ホームページ作成 -->
+    <FeatureHighlight
+      title="集客できるホームページを、最短5分で。"
+      description="清掃会社に特化したデザインテンプレートを選ぶだけ。SEO対策済みの集客力のあるホームページを簡単に作成できます。"
+      bullets={[
+        "清掃業界特化のプロ品質テンプレートを多数用意",
+        "SEO・MEO対策が標準搭載で検索上位表示をサポート",
+        "スマートフォン対応のレスポンシブデザイン",
+      ]}
+      mockupType="website"
+    />
+
+    <WhyUs />
+    <Testimonials />
+    <CTABanner />
+    <News />
+  </main>
+
+  <Footer />
+</Layout>

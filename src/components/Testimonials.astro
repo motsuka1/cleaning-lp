@@ -1,0 +1,75 @@
+---
+import SectionHeading from "./SectionHeading.astro";
+
+const testimonials = [
+  {
+    company: "株式会社クリーンプロ",
+    person: "代表取締役 山田 太郎",
+    quote:
+      "清掃報告書の作成時間が1/3になりました。スタッフからも「使いやすい」と好評です。AIの精度が高く、修正がほとんど必要ありません。",
+    metric: "報告書作成時間 67%削減",
+  },
+  {
+    company: "美装サービス株式会社",
+    person: "業務部長 佐藤 花子",
+    quote:
+      "勤怠管理のペーパーレス化で、月末の集計作業が劇的に楽になりました。現場スタッフの打刻忘れも激減しています。",
+    metric: "集計作業 月20時間削減",
+  },
+  {
+    company: "グリーンケア株式会社",
+    person: "営業部 鈴木 一郎",
+    quote:
+      "ホームページを作ったことで、Web経由の問い合わせが月30件に増えました。テンプレートの質が高く、5分で本格的なサイトが完成しました。",
+    metric: "Web問い合わせ 月30件獲得",
+  },
+];
+---
+
+<section id="testimonials" class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="reveal">
+      <SectionHeading
+        title="導入企業の声"
+        subtitle="CleanAIを導入いただいた企業様からの声をご紹介します"
+      />
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      {
+        testimonials.map((t) => (
+          <div class="reveal bg-bg-alt rounded-2xl p-8 relative">
+            <!-- Quote mark -->
+            <div class="text-5xl text-primary/10 font-serif absolute top-4 left-6">
+              "
+            </div>
+
+            <p class="text-text-body leading-relaxed mb-6 relative z-10">
+              {t.quote}
+            </p>
+
+            <!-- Metric badge -->
+            <div class="inline-block bg-highlight px-3 py-1 rounded-full mb-6">
+              <span class="text-sm font-medium text-yellow-800">
+                {t.metric}
+              </span>
+            </div>
+
+            <!-- Person -->
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
+                <span class="text-primary font-bold text-sm">
+                  {t.person.split(" ").pop()?.charAt(0)}
+                </span>
+              </div>
+              <div>
+                <p class="text-sm font-bold">{t.company}</p>
+                <p class="text-xs text-text-secondary">{t.person}</p>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

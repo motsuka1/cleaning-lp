@@ -1,0 +1,191 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  bullets: string[];
+  reversed?: boolean;
+  iconColor?: string;
+  mockupType?: "report" | "attendance" | "website";
+}
+
+const {
+  title,
+  description,
+  bullets,
+  reversed = false,
+  iconColor = "primary",
+  mockupType = "report",
+} = Astro.props;
+---
+
+<section class={`py-20 ${reversed ? "bg-bg-alt" : "bg-white"}`}>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div
+      class:list={[
+        "grid md:grid-cols-2 gap-12 items-center",
+        reversed && "md:[direction:rtl] md:[&>*]:[direction:ltr]",
+      ]}
+    >
+      <!-- Text -->
+      <div class="reveal">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4 leading-tight">
+          {title}
+        </h2>
+        <p class="text-text-secondary text-lg mb-8">{description}</p>
+        <ul class="space-y-4">
+          {
+            bullets.map((bullet) => (
+              <li class="flex items-start gap-3">
+                <div
+                  class={`flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center mt-0.5 ${
+                    iconColor === "accent"
+                      ? "bg-accent/10 text-accent"
+                      : "bg-primary/10 text-primary"
+                  }`}
+                >
+                  <svg
+                    class="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                </div>
+                <span class="text-text-body">{bullet}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <!-- Mockup -->
+      <div class="reveal">
+        {
+          mockupType === "report" && (
+            <div class="bg-white rounded-2xl shadow-xl border border-gray-100 p-6">
+              <div class="flex items-center gap-2 mb-4">
+                <div class="w-3 h-3 rounded-full bg-red-400" />
+                <div class="w-3 h-3 rounded-full bg-yellow-400" />
+                <div class="w-3 h-3 rounded-full bg-green-400" />
+              </div>
+              <div class="space-y-3">
+                <div class="flex items-center gap-3 p-3 bg-bg-alt rounded-lg">
+                  <div class="w-16 h-16 bg-gray-200 rounded-lg flex items-center justify-center">
+                    <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                  </div>
+                  <div class="flex-1">
+                    <p class="text-sm font-medium">写真からAI自動解析中...</p>
+                    <div class="w-full bg-gray-200 rounded-full h-1.5 mt-2">
+                      <div class="bg-primary h-1.5 rounded-full" style="width: 75%" />
+                    </div>
+                  </div>
+                </div>
+                <div class="p-3 bg-bg-alt rounded-lg">
+                  <p class="text-xs text-text-secondary mb-1">AI生成レポート</p>
+                  <div class="space-y-1">
+                    <div class="h-2 bg-gray-200 rounded w-full" />
+                    <div class="h-2 bg-gray-200 rounded w-4/5" />
+                    <div class="h-2 bg-gray-200 rounded w-3/5" />
+                  </div>
+                </div>
+                <div class="flex gap-2">
+                  <span class="text-xs bg-accent/10 text-accent px-2 py-1 rounded-full">品質: A</span>
+                  <span class="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full">完了率: 100%</span>
+                </div>
+              </div>
+            </div>
+          )
+        }
+
+        {
+          mockupType === "attendance" && (
+            <div class="bg-white rounded-2xl shadow-xl border border-gray-100 p-6">
+              <div class="flex items-center gap-2 mb-4">
+                <div class="w-3 h-3 rounded-full bg-red-400" />
+                <div class="w-3 h-3 rounded-full bg-yellow-400" />
+                <div class="w-3 h-3 rounded-full bg-green-400" />
+              </div>
+              <div class="space-y-3">
+                <div class="text-center p-4 bg-accent/5 rounded-lg border border-accent/20">
+                  <p class="text-xs text-accent font-medium mb-1">出勤打刻</p>
+                  <p class="text-3xl font-bold text-text-body">09:00</p>
+                  <p class="text-xs text-text-secondary mt-1">2026年2月23日</p>
+                </div>
+                {[
+                  { name: "田中 太郎", time: "08:55", status: "出勤中" },
+                  { name: "佐藤 花子", time: "09:02", status: "出勤中" },
+                  { name: "鈴木 一郎", time: "—", status: "未打刻" },
+                ].map((staff) => (
+                  <div class="flex items-center justify-between p-3 bg-bg-alt rounded-lg">
+                    <div class="flex items-center gap-3">
+                      <div class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center text-xs font-medium text-text-secondary">
+                        {staff.name.charAt(0)}
+                      </div>
+                      <div>
+                        <p class="text-sm font-medium">{staff.name}</p>
+                        <p class="text-xs text-text-secondary">{staff.time}</p>
+                      </div>
+                    </div>
+                    <span
+                      class={`text-xs px-2 py-1 rounded-full font-medium ${
+                        staff.status === "出勤中"
+                          ? "bg-accent/10 text-accent"
+                          : "bg-yellow-100 text-yellow-700"
+                      }`}
+                    >
+                      {staff.status}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )
+        }
+
+        {
+          mockupType === "website" && (
+            <div class="bg-white rounded-2xl shadow-xl border border-gray-100 p-6">
+              <div class="flex items-center gap-2 mb-4">
+                <div class="w-3 h-3 rounded-full bg-red-400" />
+                <div class="w-3 h-3 rounded-full bg-yellow-400" />
+                <div class="w-3 h-3 rounded-full bg-green-400" />
+                <div class="flex-1 ml-2 bg-bg-alt rounded px-3 py-1">
+                  <span class="text-xs text-text-secondary">https://your-cleaning.com</span>
+                </div>
+              </div>
+              <div class="space-y-3">
+                <div class="h-24 bg-gradient-to-r from-primary to-blue-400 rounded-lg flex items-center justify-center">
+                  <div class="text-center text-white">
+                    <p class="font-bold text-sm">あなたの清掃会社名</p>
+                    <p class="text-xs opacity-80 mt-1">プロの清掃をお届けします</p>
+                  </div>
+                </div>
+                <div class="grid grid-cols-3 gap-2">
+                  <div class="h-12 bg-bg-alt rounded flex items-center justify-center">
+                    <span class="text-xs text-text-secondary">サービス</span>
+                  </div>
+                  <div class="h-12 bg-bg-alt rounded flex items-center justify-center">
+                    <span class="text-xs text-text-secondary">実績</span>
+                  </div>
+                  <div class="h-12 bg-bg-alt rounded flex items-center justify-center">
+                    <span class="text-xs text-text-secondary">お問合せ</span>
+                  </div>
+                </div>
+                <div class="flex gap-2">
+                  <span class="text-xs bg-accent/10 text-accent px-2 py-1 rounded-full">SEO対策済</span>
+                  <span class="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full">スマホ対応</span>
+                </div>
+              </div>
+            </div>
+          )
+        }
+      </div>
+    </div>
+  </div>
+</section>
